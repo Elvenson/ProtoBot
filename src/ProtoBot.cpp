@@ -1306,21 +1306,8 @@ void ProtoBot::DriveHandler(uint8_t xy_speed, float xy_angle) {
 #endif
       delay(MOTOR_SURGEDELAY);  // Surge Current delay
     }
-    if (xy_speed < (MOTOR_SPINSPEED - 20U)) {
-      xy_speed = xy_speed / 3;
-    } else if (xy_speed < (MOTOR_SPINSPEED - 10U)) {
-      xy_speed = xy_speed / 2;
-    } else {
-      //Skip
-    }
-
-    if (xy_speed < MOTOR_DEADZONE) {
-      xy_speed = MOTOR_DEADZONE;
-    } else if (xy_speed > MOTOR_SPINSPEED) {
-      xy_speed = MOTOR_SPINSPEED;
-    } else {
-      //skip
-    }
+    xy_speed = constrain(xy_speed, 1, 100);
+    xy_speed = (uint8_t)(map(xy_speed, 1, 100, MOTOR_DEADZONE, MOTOR_SPINSPEED));
 
     if (speed_reduction == 0) {
       speed_reduction = 1;
@@ -1363,28 +1350,9 @@ void ProtoBot::DriveHandler(uint8_t xy_speed, float xy_angle) {
       delay(MOTOR_SURGEDELAY);  // Surge Current delay
     }
 
-    if (xy_speed < (MOTOR_SPINSPEED - 20U)) {
-      xy_speed = xy_speed / 3;
-    } else if (xy_speed < (MOTOR_SPINSPEED - 10U)) {
-      xy_speed = xy_speed / 2;
-    } else {
-      //Skip
-    }
+    xy_speed = constrain(xy_speed, 1, 100);
+    xy_speed = (uint8_t)(map(xy_speed, 1, 100, MOTOR_DEADZONE, MOTOR_SPINSPEED));
 
-    if (xy_speed < MOTOR_DEADZONE) {
-      xy_speed = MOTOR_DEADZONE;
-    } else if (xy_speed > MOTOR_SPINSPEED) {
-      xy_speed = MOTOR_SPINSPEED;
-    } else {
-      //skip
-    }
-    if (xy_speed < MOTOR_DEADZONE) {
-      xy_speed = MOTOR_DEADZONE;
-    } else if (xy_speed > MOTOR_SPINSPEED) {
-      xy_speed = MOTOR_SPINSPEED;
-    } else {
-      //skip
-    }
     if (speed_reduction == 0) {
       speed_reduction = 1;
     } else if (speed_reduction >= 3) {
