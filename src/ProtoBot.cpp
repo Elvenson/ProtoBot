@@ -712,7 +712,7 @@ void ProtoBot::ShapeHandler(uint8_t shape_type) {
   switch (shape_type) {
     case 1:
       //Make circle shape
-      new_shape_thr = map(shape_thr, 0, 100, MOTOR_DEADZONE, MOTOR_MAXSPEED);
+      new_shape_thr = map(shape_thr, 0, 100, MOTOR_DEADZONE, MOTOR_CIRCLESPEED);
       _motor1_dir = 0;
 
 #if defined(ARDUINO_ESP32C6_DEV)

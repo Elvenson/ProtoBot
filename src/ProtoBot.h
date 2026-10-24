@@ -22,7 +22,8 @@
 #define DEVICE_NAME "protobot"
 #define MOTOR_ORIENTATION 1
 #define MOTOR_DEADZONE 50U
-#define MOTOR_MAXSPEED 90U
+#define MOTOR_MAXSPEED 100U
+#define MOTOR_CIRCLESPEED 90U  // Circle inner-wheel cap - must stay below the outer wheel's 100 or the circle becomes a straight line
 #define MOTOR_SPINSPEED 70U
 #define MOTOR_SURGEDELAY 100U
 #define ROT_TIME 60
